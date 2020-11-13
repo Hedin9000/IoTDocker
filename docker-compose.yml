@@ -1,0 +1,105 @@
+version: 3.8
+services:
+  # System
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_volume:/data
+    restart: always
+    ports:
+      - 9000:9000
+      - 8000:8000
+  #Tools
+  chronograf:
+    container_name: chronograf
+    image: chronograf
+    restart: always
+    volumes:
+      - chronograf_data:/var/lib/chronograf
+    ports:
+      - 8888:8888
+    networks:
+      - iot_overlay_network:
+        
+  #IoT Services
+  influxdb:
+    container_name: influxdb
+    image: influxdb
+    restart: always
+    volumes:
+      - influxdb_data_volume:/var/lib/influxdb
+      - influxdb_config_volume:/etc/influxdb
+    ports:
+      - 8086:8086 
+      - 8082:8082 
+      - 8089:8089
+    networks:
+      iot_overlay_network:
+        aliases:
+          - influxdb
+      
+  eclipse-mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto:latest
+    restart: always
+    volumes:
+      - mosquitto_data_volume:/mosquitto/config
+      - mosquitto_config_volume:/mosquitto/data
+    ports:
+      - 1883:1883
+    user: '1000:1000'
+    networks:
+      iot_overlay_network:
+        aliases:
+          - mosquitto
+
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "1880:1880"
+    networks:
+      iot_overlay_network:
+        aliases:
+          - nodered
+    volumes:
+      - nodered_volume:/data
+    # devices: 
+    #   - /dev/ttyUSB1:/dev/ttyUSB1
+    #   - /dev/ttyUSB0:/dev/ttyUSB0
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    volumes:
+      - zigbee2mqtt_volume:/app/data
+      - /run/udev:/run/udev:ro #  is optional, only required for autodetecting the port
+    # devices:
+    #   - /dev/ttyACM0:/dev/ttyACM0
+    restart: always
+    networks:
+      iot_overlay_network:
+        aliases:
+          - zigbee2mqtt
+    privileged: true
+    environment:
+      - TZ=Europe/Moscow
+
+volumes:
+  # System
+  portainer_volume:
+  # Tools
+  chronograf_volume:
+  # IoT Services  
+  influxdb_data_volume:
+  influxdb_config_volume:
+  mosquitto_data_volume:
+  mosquitto_config_volume:
+  nodered_volume:
+  zigbee2mqtt_volume:
+
+networks:
+  iot_overlay_network:

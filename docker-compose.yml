@@ -1,4 +1,4 @@
-version: 3.8
+version: "3.0"
 services:
   # System
   portainer:
@@ -11,17 +11,30 @@ services:
     ports:
       - 9000:9000
       - 8000:8000
+  volumes_sftp: #read-only all volumes
+    container_name: volumes_sftp
+    image: atmoz/sftp
+    volumes:
+      - influxdb_data_volume:/home/user/influxdb_data_volume
+      - influxdb_config_volume:/home/user/influxdb_config_volume
+      - mosquitto_data_volume:/home/user/mosquitto_data_volume
+      - mosquitto_config_volume:/home/user/mosquitto_config_volume
+      - nodered_volume:/home/user/nodered_volume
+      - zigbee2mqtt_volume:/home/user/zigbee2mqtt_volume
+    ports:
+        - "2222:22"
+    command: user:pass:1001
   #Tools
   chronograf:
     container_name: chronograf
     image: chronograf
     restart: always
     volumes:
-      - chronograf_data:/var/lib/chronograf
+      - chronograf_volume:/var/lib/chronograf
     ports:
       - 8888:8888
     networks:
-      - iot_overlay_network:
+      - iot_overlay_network
         
   #IoT Services
   influxdb:
@@ -56,6 +69,7 @@ services:
           - mosquitto
 
   node-red:
+    container_name: nodered
     image: nodered/node-red:latest
     environment:
       - TZ=Europe/Moscow
@@ -103,3 +117,4 @@ volumes:
 
 networks:
   iot_overlay_network:
+    driver: bridge

@@ -11,6 +11,8 @@ services:
     ports:
       - 9000:9000
       - 8000:8000
+    networks:
+      - iot_network
   volumes_sftp: #read-only all volumes
     container_name: volumes_sftp
     image: atmoz/sftp
@@ -21,6 +23,7 @@ services:
       - mosquitto_config_volume:/home/user/mosquitto_config_volume
       - nodered_volume:/home/user/nodered_volume
       - zigbee2mqtt_volume:/home/user/zigbee2mqtt_volume
+      - homeassistant_volume:/home/user/homeassistant_volume
     ports:
         - "2222:22"
     command: user:pass:1001
@@ -34,9 +37,19 @@ services:
     ports:
       - 8888:8888
     networks:
-      - iot_overlay_network
+      - iot_network
         
   #IoT Services
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant:latest
+    volumes:
+      - homeassistant_volume:/config/
+    ports:
+      - "8123:8123"
+    restart: always
+    networks:
+      - iot_network
   influxdb:
     container_name: influxdb
     image: influxdb
@@ -49,7 +62,7 @@ services:
       - 8082:8082 
       - 8089:8089
     networks:
-      iot_overlay_network:
+      iot_network:
         aliases:
           - influxdb
       
@@ -64,7 +77,7 @@ services:
       - 1883:1883
     user: '1000:1000'
     networks:
-      iot_overlay_network:
+      iot_network:
         aliases:
           - mosquitto
 
@@ -76,7 +89,7 @@ services:
     ports:
       - "1880:1880"
     networks:
-      iot_overlay_network:
+      iot_network:
         aliases:
           - nodered
     volumes:
@@ -95,7 +108,7 @@ services:
     #   - /dev/ttyACM0:/dev/ttyACM0
     restart: always
     networks:
-      iot_overlay_network:
+      iot_network:
         aliases:
           - zigbee2mqtt
     privileged: true
@@ -114,7 +127,8 @@ volumes:
   mosquitto_config_volume:
   nodered_volume:
   zigbee2mqtt_volume:
+  homeassistant_volume:
 
 networks:
-  iot_overlay_network:
+  iot_network:
     driver: bridge

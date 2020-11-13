@@ -3,7 +3,7 @@ services:
   # System
   portainer:
     container_name: portainer
-    image: portainer/portainer
+    image: portainer/portainer:1.24.1-alpine #last version: portainer/portainer:alpine
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_volume:/data
@@ -13,6 +13,9 @@ services:
       - 8000:8000
     networks:
       - iot_network
+    environment:
+      - TZ=Europe/Moscow
+
   volumes_sftp: #read-only all volumes
     container_name: volumes_sftp
     image: atmoz/sftp
@@ -27,10 +30,12 @@ services:
     ports:
         - "2222:22"
     command: user:pass:1001
+    environment:
+      - TZ=Europe/Moscow
   #Tools
   chronograf:
     container_name: chronograf
-    image: chronograf
+    image: chronograf:1.8.8-alpine #last version: chronograf:latest
     restart: always
     volumes:
       - chronograf_volume:/var/lib/chronograf
@@ -38,11 +43,15 @@ services:
       - 8888:8888
     networks:
       - iot_network
+    depends_on:
+      - influxdb
+    environment:
+      - TZ=Europe/Moscow
         
   #IoT Services
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:latest
+    image: homeassistant/home-assistant:0.117.6 #last version: homeassistant/home-assistant:latest
     volumes:
       - homeassistant_volume:/config/
     ports:
@@ -50,25 +59,30 @@ services:
     restart: always
     networks:
       - iot_network
+    environment:
+      - TZ=Europe/Moscow
+
   influxdb:
     container_name: influxdb
-    image: influxdb
+    image: influxdb:1.8.3-alpine #last version: influxdb:latest
     restart: always
     volumes:
       - influxdb_data_volume:/var/lib/influxdb
       - influxdb_config_volume:/etc/influxdb
-    ports:
-      - 8086:8086 
-      - 8082:8082 
-      - 8089:8089
+    expose:
+      - 8086 
+      - 8082 
+      - 8089
     networks:
       iot_network:
         aliases:
           - influxdb
-      
+    environment:
+      - TZ=Europe/Moscow
+
   eclipse-mosquitto:
     container_name: mosquitto
-    image: eclipse-mosquitto:latest
+    image: eclipse-mosquitto:1.6.12 #last version: eclipse-mosquitto:latest
     restart: always
     volumes:
       - mosquitto_data_volume:/mosquitto/config
@@ -80,10 +94,12 @@ services:
       iot_network:
         aliases:
           - mosquitto
+    environment:
+      - TZ=Europe/Moscow
 
   node-red:
     container_name: nodered
-    image: nodered/node-red:latest
+    image: nodered/node-red:1.2.3-12-minimal-amd64 #last version: nodered/node-red:latest
     environment:
       - TZ=Europe/Moscow
     ports:
@@ -97,10 +113,12 @@ services:
     # devices: 
     #   - /dev/ttyUSB1:/dev/ttyUSB1
     #   - /dev/ttyUSB0:/dev/ttyUSB0
+    environment:
+      - TZ=Europe/Moscow
 
   zigbee2mqtt:
     container_name: zigbee2mqtt
-    image: koenkk/zigbee2mqtt
+    image: koenkk/zigbee2mqtt:1.16.1 #last version: koenkk/zigbee2mqtt:latest
     volumes:
       - zigbee2mqtt_volume:/app/data
       - /run/udev:/run/udev:ro #  is optional, only required for autodetecting the port
@@ -112,6 +130,8 @@ services:
         aliases:
           - zigbee2mqtt
     privileged: true
+    depends_on:
+      - eclipse-mosquitto
     environment:
       - TZ=Europe/Moscow
 

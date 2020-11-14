@@ -30,6 +30,8 @@ services:
     ports:
         - "2222:22"
     command: user:pass:1001
+    networks:
+      - iot_network
     environment:
       - TZ=Europe/Moscow
   #Tools
@@ -47,7 +49,20 @@ services:
       - influxdb
     environment:
       - TZ=Europe/Moscow
-        
+
+  zigbee2mqttAssistant:
+    image: carldebilly/zigbee2mqttassistant:0.3.178-linux-x64 #last version: carldebilly/zigbee2mqttassistant:linux-arm64
+    container_name: zigbee2mqttAssistant
+    env_file:
+      - zigbee2mqttAssistant.env
+    ports:
+      - 8880:8880
+    restart: always
+    depends_on:
+      - eclipse-mosquitto
+    networks:
+      - iot_network
+
   #IoT Services
   homeassistant:
     container_name: homeassistant

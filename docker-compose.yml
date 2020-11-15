@@ -57,7 +57,7 @@ services:
     env_file:
       - zigbee2mqttAssistant.env
     ports:
-      - 8880:8880
+      - 8880:80
     restart: always
     depends_on:
       - eclipse-mosquitto

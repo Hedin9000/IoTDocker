@@ -101,8 +101,8 @@ services:
     image: eclipse-mosquitto:1.6.12 #last version: eclipse-mosquitto:latest
     restart: always
     volumes:
-      - mosquitto_data_volume:/mosquitto/config
-      - mosquitto_config_volume:/mosquitto/data
+      - mosquitto_data_volume:/mosquitto/data
+      - mosquitto_config_volume:/mosquitto/config
     ports:
       - 1883:1883
     user: '1000:1000'

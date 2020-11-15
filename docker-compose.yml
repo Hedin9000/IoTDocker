@@ -34,6 +34,7 @@ services:
       - iot_network
     environment:
       - TZ=Europe/Moscow
+      
   #Tools
   chronograf:
     container_name: chronograf
@@ -137,8 +138,8 @@ services:
     volumes:
       - zigbee2mqtt_volume:/app/data
       - /run/udev:/run/udev:ro #  is optional, only required for autodetecting the port
-    # devices:
-    #   - /dev/ttyACM0:/dev/ttyACM0
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
     restart: always
     networks:
       iot_network:

@@ -3,7 +3,7 @@ services:
   # System
   portainer:
     container_name: portainer
-    image: portainer/portainer:1.24.1-alpine #last version: portainer/portainer:alpine
+    image: portainer/portainer-ce:2.0.0-alpine #last version: portainer/portainer-ce:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_volume:/data

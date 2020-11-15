@@ -109,7 +109,7 @@ services:
     networks:
       iot_network:
         aliases:
-          - mosquitto
+          - mqtt
     environment:
       - TZ=Europe/Moscow
 

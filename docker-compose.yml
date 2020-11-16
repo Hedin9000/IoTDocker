@@ -16,10 +16,15 @@ services:
     environment:
       - TZ=Europe/Moscow
 
-  volumes_sftp: #read-only all volumes
-    container_name: volumes_sftp
-    image: atmoz/sftp
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    restart: always
+    ports:
+      - "8081:80"
     volumes:
+      - filebrowser_data_volume:/data
+      - filebrowser_config_volume:/config 
       - influxdb_data_volume:/home/user/influxdb_data_volume
       - influxdb_config_volume:/home/user/influxdb_config_volume
       - mosquitto_data_volume:/home/user/mosquitto_data_volume
@@ -27,9 +32,6 @@ services:
       - nodered_volume:/home/user/nodered_volume
       - zigbee2mqtt_volume:/home/user/zigbee2mqtt_volume
       - homeassistant_volume:/home/user/homeassistant_volume
-    ports:
-        - "2222:22"
-    command: user:pass:1001
     networks:
       - iot_network
     environment:
@@ -63,24 +65,6 @@ services:
       - eclipse-mosquitto
     networks:
       - iot_network
-
-  icecoder:
-    image: nimmis/icecoder
-    ports:
-      - 8081:80
-    restart: always
-    networks:
-      - iot_network
-    volumes:
-      - influxdb_data_volume:/home/user/influxdb_data_volume
-      - influxdb_config_volume:/home/user/influxdb_config_volume
-      - mosquitto_data_volume:/home/user/mosquitto_data_volume
-      - mosquitto_config_volume:/home/user/mosquitto_config_volume
-      - nodered_volume:/home/user/nodered_volume
-      - zigbee2mqtt_volume:/home/user/zigbee2mqtt_volume
-      - homeassistant_volume:/home/user/homeassistant_volume
-    environment:
-      - TZ=Europe/Moscow
 
   #IoT Services
   homeassistant:
@@ -174,6 +158,8 @@ volumes:
   portainer_volume:
   # Tools
   chronograf_volume:
+  filebrowser_data_volume:
+  filebrowser_config_volume: 
   # IoT Services  
   influxdb_data_volume:
   influxdb_config_volume:

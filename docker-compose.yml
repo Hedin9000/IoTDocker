@@ -74,6 +74,7 @@ services:
       - homeassistant_volume:/config/
     ports:
       - "8123:8123"
+      - "8300:8300"
     restart: always
     iot_network:
       aliases:

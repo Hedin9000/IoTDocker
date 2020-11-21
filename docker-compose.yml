@@ -75,8 +75,9 @@ services:
     ports:
       - "8123:8123"
     restart: always
-    networks:
-      - iot_network
+    iot_network:
+      aliases:
+        - homeassistant
     environment:
       - TZ=Europe/Moscow
 
@@ -131,8 +132,6 @@ services:
     # devices: 
     #   - /dev/ttyUSB1:/dev/ttyUSB1
     #   - /dev/ttyUSB0:/dev/ttyUSB0
-    environment:
-      - TZ=Europe/Moscow
 
   zigbee2mqtt:
     container_name: zigbee2mqtt

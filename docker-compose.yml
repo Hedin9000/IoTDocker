@@ -76,9 +76,10 @@ services:
       - "8123:8123"
       - "8300:8300"
     restart: always
-    iot_network:
-      aliases:
-        - homeassistant
+    networks:
+      iot_network:
+        aliases:
+          - homeassistant
     environment:
       - TZ=Europe/Moscow
 

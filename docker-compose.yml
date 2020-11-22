@@ -23,19 +23,20 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - filebrowser_data_volume:/data
-      - filebrowser_config_volume:/config 
-      - influxdb_data_volume:/home/user/influxdb_data_volume
-      - influxdb_config_volume:/home/user/influxdb_config_volume
-      - mosquitto_data_volume:/home/user/mosquitto_data_volume
-      - mosquitto_config_volume:/home/user/mosquitto_config_volume
-      - nodered_volume:/home/user/nodered_volume
-      - zigbee2mqtt_volume:/home/user/zigbee2mqtt_volume
-      - homeassistant_volume:/home/user/homeassistant_volume
+      - filebrowser_volume:/data
+      - influxdb_data_volume:/data/share/influxdb_data_volume
+      - influxdb_config_volume:/data/share/influxdb_config_volume
+      - mosquitto_data_volume:/data/share/mosquitto_data_volume
+      - mosquitto_config_volume:/data/share/mosquitto_config_volume
+      - nodered_volume:/data/share/nodered_volume
+      - zigbee2mqtt_volume:/data/share/zigbee2mqtt_volume
+      - homeassistant_volume:/data/share/homeassistant_volume
     networks:
       - iot_network
     environment:
       - TZ=Europe/Moscow
+    command:  ["--root=/data/share", "--address=0.0.0.0", "--database=/data/filebrowser.db", "--config=/data/config.json"]
+
       
   #Tools
   chronograf:

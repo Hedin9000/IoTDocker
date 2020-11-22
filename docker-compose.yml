@@ -160,8 +160,7 @@ volumes:
   portainer_volume:
   # Tools
   chronograf_volume:
-  filebrowser_data_volume:
-  filebrowser_config_volume: 
+  filebrowser_volume:
   # IoT Services  
   influxdb_data_volume:
   influxdb_config_volume:

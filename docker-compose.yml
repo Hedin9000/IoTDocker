@@ -131,6 +131,8 @@ services:
       iot_network:
         aliases:
           - nodered
+    group_add:
+      - dialout
     volumes:
       - nodered_volume:/data
     privileged: true

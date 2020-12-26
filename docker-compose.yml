@@ -166,10 +166,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "6052:6052"
-    networks:
-      iot_network:
-        aliases:
-          - esphome
+    network_mode: host
     restart: always
     devices:
       - /dev/ttyUSB1:/dev/ttyUSB1

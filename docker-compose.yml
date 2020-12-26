@@ -163,6 +163,8 @@ services:
       - esphome_volume:/config:rw
       # Use local time for logging timestamps
       - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "6052:6052"
     networks:
       iot_network:
         aliases:

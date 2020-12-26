@@ -77,8 +77,6 @@ services:
       - "8123:8123"
       - "8300:8300"
     restart: always
-    devices:
-      - /dev/ttyUSB1:/dev/ttyUSB1
     networks:
       iot_network:
         aliases:
@@ -159,6 +157,19 @@ services:
     environment:
       - TZ=Europe/Moscow
 
+  esphome:
+    image: esphome/esphome
+    volumes:
+      - esphome_volume:/config:rw
+      # Use local time for logging timestamps
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      iot_network:
+        aliases:
+          - esphome
+    restart: always
+    devices:
+      - /dev/ttyUSB1:/dev/ttyUSB1
 volumes:
   # System
   portainer_volume:
@@ -173,6 +184,7 @@ volumes:
   nodered_volume:
   zigbee2mqtt_volume:
   homeassistant_volume:
+  esphome_volume:
 
 networks:
   iot_network:

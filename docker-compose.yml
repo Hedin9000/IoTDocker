@@ -77,6 +77,8 @@ services:
       - "8123:8123"
       - "8300:8300"
     restart: always
+    devices:
+      - /dev/ttyUSB1:/dev/ttyUSB1
     networks:
       iot_network:
         aliases:
@@ -131,8 +133,7 @@ services:
       iot_network:
         aliases:
           - nodered
-    group_add:
-      - dialout
+    user: root
     volumes:
       - nodered_volume:/data
     privileged: true

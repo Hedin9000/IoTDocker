@@ -31,6 +31,7 @@ services:
       - nodered_volume:/data/share/nodered_volume
       - zigbee2mqtt_volume:/data/share/zigbee2mqtt_volume
       - homeassistant_volume:/data/share/homeassistant_volume
+      - esphome_volume:/data/share/esphome_volume
     networks:
       - iot_network
     environment:

@@ -71,7 +71,7 @@ services:
   #IoT Services
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:0.117.6 #last version: homeassistant/home-assistant:latest
+    image: homeassistant/home-assistant:2021.8 #last version: homeassistant/home-assistant:latest
     volumes:
       - homeassistant_volume:/config/
     ports:

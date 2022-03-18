@@ -56,7 +56,7 @@ services:
       - TZ=Europe/Moscow
 
   zigbee2mqttAssistant:
-    image: carldebilly/zigbee2mqttassistant:0.3.178-linux-x64 #last version: carldebilly/zigbee2mqttassistant:linux-arm64
+    image: carldebilly/zigbee2mqttassistant:0.3.181-linux-x64 #last version: carldebilly/zigbee2mqttassistant:linux-arm64
     container_name: zigbee2mqttAssistant
     env_file:
       - zigbee2mqttAssistant.env
@@ -71,7 +71,7 @@ services:
   #IoT Services
   homeassistant:
     container_name: homeassistant
-    image: homeassistant/home-assistant:2021.8 #last version: homeassistant/home-assistant:latest
+    image: homeassistant/home-assistant:2022.3 #last version: homeassistant/home-assistant:latest
     volumes:
       - homeassistant_volume:/config/
     ports:
@@ -85,27 +85,27 @@ services:
     environment:
       - TZ=Europe/Moscow
 
-  influxdb:
-    container_name: influxdb
-    image: influxdb:1.8.3-alpine #last version: influxdb:latest
-    restart: always
-    volumes:
-      - influxdb_data_volume:/var/lib/influxdb
-      - influxdb_config_volume:/etc/influxdb
-    expose:
-      - 8086 
-      - 8082 
-      - 8089
-    networks:
-      iot_network:
-        aliases:
-          - influxdb
-    environment:
-      - TZ=Europe/Moscow
+  # influxdb:
+    # container_name: influxdb
+    # image: influxdb:1.8.3-alpine #last version: influxdb:latest
+    # restart: always
+    # volumes:
+      # - influxdb_data_volume:/var/lib/influxdb
+      # - influxdb_config_volume:/etc/influxdb
+    # expose:
+      # - 8086 
+      # - 8082 
+      # - 8089
+    # networks:
+      # iot_network:
+        # aliases:
+          # - influxdb
+    # environment:
+      # - TZ=Europe/Moscow
 
   eclipse-mosquitto:
     container_name: mosquitto
-    image: eclipse-mosquitto:1.6.12 #last version: eclipse-mosquitto:latest
+    image: eclipse-mosquitto:2.0.14 #last version: eclipse-mosquitto:latest
     restart: always
     volumes:
       - mosquitto_data_volume:/mosquitto/data
@@ -141,7 +141,7 @@ services:
 
   zigbee2mqtt:
     container_name: zigbee2mqtt
-    image: koenkk/zigbee2mqtt:1.16.1 #last version: koenkk/zigbee2mqtt:latest
+    image: koenkk/zigbee2mqtt:1.24.0 #last version: koenkk/zigbee2mqtt:latest
     volumes:
       - zigbee2mqtt_volume:/app/data
       - /run/udev:/run/udev:ro #  is optional, only required for autodetecting the port
@@ -159,7 +159,7 @@ services:
       - TZ=Europe/Moscow
 
   esphome:
-    image: esphome/esphome
+    image: esphome/esphome:2022.3.0
     volumes:
       - esphome_volume:/config:rw
       # Use local time for logging timestamps
@@ -168,8 +168,8 @@ services:
       - "6052:6052"
     network_mode: host
     restart: always
-    devices:
-      - /dev/ttyUSB1:/dev/ttyUSB1
+    # devices:
+      # - /dev/ttyUSB1:/dev/ttyUSB1
 volumes:
   # System
   portainer_volume:

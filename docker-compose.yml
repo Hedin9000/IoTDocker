@@ -159,6 +159,7 @@ services:
       - TZ=Europe/Moscow
 
   esphome:
+    container_name: esphome
     image: esphome/esphome:2022.3.0
     volumes:
       - esphome_volume:/config:rw

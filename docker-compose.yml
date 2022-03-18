@@ -40,20 +40,20 @@ services:
 
       
   #Tools
-  chronograf:
-    container_name: chronograf
-    image: chronograf:1.8.8-alpine #last version: chronograf:latest
-    restart: always
-    volumes:
-      - chronograf_volume:/var/lib/chronograf
-    ports:
-      - 8888:8888
-    networks:
-      - iot_network
-    depends_on:
-      - influxdb
-    environment:
-      - TZ=Europe/Moscow
+  # chronograf:
+    # container_name: chronograf
+    # image: chronograf:1.8.8-alpine #last version: chronograf:latest
+    # restart: always
+    # volumes:
+      # - chronograf_volume:/var/lib/chronograf
+    # ports:
+      # - 8888:8888
+    # networks:
+      # - iot_network
+    # depends_on:
+      # - influxdb
+    # environment:
+      # - TZ=Europe/Moscow
 
   zigbee2mqttAssistant:
     image: carldebilly/zigbee2mqttassistant:0.3.181-linux-x64 #last version: carldebilly/zigbee2mqttassistant:linux-arm64

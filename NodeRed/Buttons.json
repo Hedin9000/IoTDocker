@@ -1,0 +1,602 @@
+[
+    {
+        "id": "adc6d514.ada848",
+        "type": "tab",
+        "label": "Buttons",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2ad047b.11835b8",
+        "type": "serial in",
+        "z": "adc6d514.ada848",
+        "name": "433Mhz ",
+        "serial": "3b45b044.4de52",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "8677f455.01d148",
+                "15e6bfaf.a48fc"
+            ]
+        ]
+    },
+    {
+        "id": "fafe5bb3.fc7778",
+        "type": "switch",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "1323269",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "72994",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "73058",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "493650",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "53138",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "132930",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "409124",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "409121",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "5842",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "402001",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "402004",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "402002",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 12,
+        "x": 670,
+        "y": 220,
+        "wires": [
+            [
+                "a70b35e3.ec6ad8"
+            ],
+            [
+                "a265e00.8a7272"
+            ],
+            [
+                "a265e00.8a7272"
+            ],
+            [
+                "5ce4f862.763fc8"
+            ],
+            [
+                "b49c689f.331518"
+            ],
+            [
+                "2caf548e.754e1c"
+            ],
+            [
+                "a46b7291.4228f"
+            ],
+            [
+                "d51ba385.d440d"
+            ],
+            [],
+            [
+                "fa4ac41b.343168"
+            ],
+            [
+                "30126829.354738"
+            ],
+            [
+                "f8d2cdbe.f8997"
+            ]
+        ]
+    },
+    {
+        "id": "a265e00.8a7272",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 100,
+        "wires": [
+            [
+                "2082413.ad230be"
+            ]
+        ]
+    },
+    {
+        "id": "5ce4f862.763fc8",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 140,
+        "wires": [
+            [
+                "14ee38a5.9d7087"
+            ]
+        ]
+    },
+    {
+        "id": "a70b35e3.ec6ad8",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 60,
+        "wires": [
+            [
+                "ed63b072.b8099"
+            ]
+        ]
+    },
+    {
+        "id": "b49c689f.331518",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 180,
+        "wires": [
+            [
+                "4f3f24b4.cd13fc"
+            ]
+        ]
+    },
+    {
+        "id": "2caf548e.754e1c",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 220,
+        "wires": [
+            [
+                "44a2c761.ec0cb8"
+            ]
+        ]
+    },
+    {
+        "id": "d51ba385.d440d",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 300,
+        "wires": [
+            [
+                "61f7be70.3a046"
+            ]
+        ]
+    },
+    {
+        "id": "a46b7291.4228f",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 260,
+        "wires": [
+            [
+                "717e6b5a.374a24"
+            ]
+        ]
+    },
+    {
+        "id": "8677f455.01d148",
+        "type": "debug",
+        "z": "adc6d514.ada848",
+        "name": "433Mhz",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 440,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "30126829.354738",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 380,
+        "wires": [
+            [
+                "5e2ea5cb.cacf5c"
+            ]
+        ]
+    },
+    {
+        "id": "fa4ac41b.343168",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 340,
+        "wires": [
+            [
+                "fd4c0ec0.0815e"
+            ]
+        ]
+    },
+    {
+        "id": "f8d2cdbe.f8997",
+        "type": "delay",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 950,
+        "y": 420,
+        "wires": [
+            [
+                "2b9f30be.e558b"
+            ]
+        ]
+    },
+    {
+        "id": "ed63b072.b8099",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/table_button",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1260,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "15e6bfaf.a48fc",
+        "type": "change",
+        "z": "adc6d514.ada848",
+        "name": "Format",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 220,
+        "wires": [
+            [
+                "fafe5bb3.fc7778"
+            ]
+        ]
+    },
+    {
+        "id": "2082413.ad230be",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/hall_button_1",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1260,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "14ee38a5.9d7087",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/bathroom_button",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1270,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4f3f24b4.cd13fc",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/bathroom_vent_button",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1290,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "44a2c761.ec0cb8",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/toilet_button",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1260,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "61f7be70.3a046",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/room_button_1_1",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1270,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "717e6b5a.374a24",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/room_button_1_2",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1270,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2c8f7c4.e684384",
+        "type": "mqtt in",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "lowpower",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "15e6bfaf.a48fc",
+                "8677f455.01d148"
+            ]
+        ]
+    },
+    {
+        "id": "fd4c0ec0.0815e",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/white_threekey_unit_1",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1270,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5e2ea5cb.cacf5c",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/white_threekey_unit_2",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1270,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2b9f30be.e558b",
+        "type": "mqtt out",
+        "z": "adc6d514.ada848",
+        "name": "",
+        "topic": "nodered/lowpower/buttons/white_threekey_unit_3",
+        "qos": "2",
+        "retain": "true",
+        "broker": "5fcc7ceb.ea38f4",
+        "x": 1270,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3b45b044.4de52",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "5fcc7ceb.ea38f4",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "mqtt",
+        "port": "1883",
+        "clientid": "nodered",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

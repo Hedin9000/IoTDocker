@@ -24,8 +24,8 @@ services:
       - "8081:80"
     volumes:
       - filebrowser_volume:/data
-      - influxdb_data_volume:/data/share/influxdb_data_volume
-      - influxdb_config_volume:/data/share/influxdb_config_volume
+      #- influxdb_data_volume:/data/share/influxdb_data_volume
+     # - influxdb_config_volume:/data/share/influxdb_config_volume
       - mosquitto_data_volume:/data/share/mosquitto_data_volume
       - mosquitto_config_volume:/data/share/mosquitto_config_volume
       - nodered_volume:/data/share/nodered_volume
@@ -87,7 +87,7 @@ services:
 
   # influxdb:
     # container_name: influxdb
-    # image: influxdb:1.8.3-alpine #last version: influxdb:latest
+    # image: influxdb:2.2 #last version: influxdb:latest
     # restart: always
     # volumes:
       # - influxdb_data_volume:/var/lib/influxdb
@@ -175,11 +175,11 @@ volumes:
   # System
   portainer_volume:
   # Tools
-  chronograf_volume:
+  #chronograf_volume:
   filebrowser_volume:
   # IoT Services  
-  influxdb_data_volume:
-  influxdb_config_volume:
+  #influxdb_data_volume:
+  #influxdb_config_volume:
   mosquitto_data_volume:
   mosquitto_config_volume:
   nodered_volume:

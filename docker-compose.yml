@@ -109,6 +109,10 @@ services:
     #   HOST_SYS: /rootfs/sys
     #   HOST_ETC: /rootfs/etc
     hostname: localhost
+    ports:
+      - 8125:8125 #statsD
+      - 8092:8092 #upd
+      - 8094:8094 #tcp
     volumes:
      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     #  - /var/run/docker.sock:/var/run/docker.sock:ro

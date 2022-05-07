@@ -24,8 +24,8 @@ services:
       - "8081:80"
     volumes:
       - filebrowser_volume:/data
-      #- influxdb_data_volume:/data/share/influxdb_data_volume
-     # - influxdb_config_volume:/data/share/influxdb_config_volume
+      - influxdb_data_volume:/data/share/influxdb_data_volume
+      - influxdb_config_volume:/data/share/influxdb_config_volume
       - mosquitto_data_volume:/data/share/mosquitto_data_volume
       - mosquitto_config_volume:/data/share/mosquitto_config_volume
       - nodered_volume:/data/share/nodered_volume
@@ -85,23 +85,21 @@ services:
     environment:
       - TZ=Europe/Moscow
 
-  # influxdb:
-    # container_name: influxdb
-    # image: influxdb:2.2 #last version: influxdb:latest
-    # restart: always
-    # volumes:
-      # - influxdb_data_volume:/var/lib/influxdb
-      # - influxdb_config_volume:/etc/influxdb
-    # expose:
-      # - 8086 
-      # - 8082 
-      # - 8089
-    # networks:
-      # iot_network:
-        # aliases:
-          # - influxdb
-    # environment:
-      # - TZ=Europe/Moscow
+  influxdb:
+    container_name: influxdb
+    image: influxdb:2.2 #last version: influxdb:latest
+    restart: always
+    env_file:
+      - influxdb.env
+    volumes:
+      - influxdb_data_volume:/var/lib/influxdb2
+      - influxdb_config_volume:/etc/influxdb2
+    ports:
+      - 8086:8086 
+    networks:
+      iot_network:
+        aliases:
+          - influxdb
 
   eclipse-mosquitto:
     container_name: mosquitto
@@ -178,8 +176,8 @@ volumes:
   #chronograf_volume:
   filebrowser_volume:
   # IoT Services  
-  #influxdb_data_volume:
-  #influxdb_config_volume:
+  influxdb_data_volume:
+  influxdb_config_volume:
   mosquitto_data_volume:
   mosquitto_config_volume:
   nodered_volume:

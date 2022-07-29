@@ -28,6 +28,8 @@ services:
       - influxdb_config_volume:/data/share/influxdb_config_volume
       - mosquitto_data_volume:/data/share/mosquitto_data_volume
       - mosquitto_config_volume:/data/share/mosquitto_config_volume
+      - mosquitto2_data_volume:/data/share/mosquitto2_data_volume
+      - mosquitto2_config_volume:/data/share/mosquitto2_config_volume
       - nodered_volume:/data/share/nodered_volume
       - zigbee2mqtt_volume:/data/share/zigbee2mqtt_volume
       - homeassistant_volume:/data/share/homeassistant_volume

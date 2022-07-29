@@ -149,11 +149,11 @@ services:
       - TZ=Europe/Moscow
     ports:
       - "1880:1880"
-    user: "1000"
     networks:
       iot_network:
         aliases:
           - nodered
+    user: root
     volumes:
       - nodered_volume:/data
     privileged: true

@@ -126,14 +126,13 @@ services:
 
   eclipse-mosquitto:
     container_name: mosquitto
-    image: eclipse-mosquitto:1.6.15 #last version: eclipse-mosquitto:latest
+    image: eclipse-mosquitto:2.0.14 #last version: eclipse-mosquitto:latest
     restart: always
     volumes:
-      - mosquitto_data_volume:/mosquitto/data
-      - mosquitto_config_volume:/mosquitto/config
+      - mosquitto2_data_volume:/mosquitto/data
+      - mosquitto2_config_volume:/mosquitto/config
     ports:
       - 1883:1883
-    user: '1000:1000'
     networks:
       iot_network:
         aliases:
@@ -202,6 +201,8 @@ volumes:
   influxdb_config_volume:
   mosquitto_data_volume:
   mosquitto_config_volume:
+  mosquitto2_data_volume:
+  mosquitto2_config_volume:
   nodered_volume:
   zigbee2mqtt_volume:
   homeassistant_volume:

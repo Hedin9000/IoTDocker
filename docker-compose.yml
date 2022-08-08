@@ -144,7 +144,7 @@ services:
 
   node-red:
     container_name: nodered
-    image: nodered/node-red:1.2.3-12-amd64 #last version: nodered/node-red:latest
+    image: nodered/node-red:3.0.2 #last version: nodered/node-red:latest
     environment:
       - TZ=Europe/Moscow
     ports:

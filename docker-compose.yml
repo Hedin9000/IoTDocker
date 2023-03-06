@@ -162,7 +162,7 @@ services:
 
   zigbee2mqtt:
     container_name: zigbee2mqtt
-    image: koenkk/zigbee2mqtt:1.30.2 #last version: koenkk/zigbee2mqtt:latest
+    image: koenkk/zigbee2mqtt:1.16.1 #last version: koenkk/zigbee2mqtt:latest
     volumes:
       - zigbee2mqtt_volume:/app/data
       - /run/udev:/run/udev:ro #  is optional, only required for autodetecting the port

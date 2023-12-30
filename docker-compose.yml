@@ -57,19 +57,6 @@ services:
     # environment:
       # - TZ=Europe/Moscow
 
-  zigbee2mqttAssistant:
-    image: carldebilly/zigbee2mqttassistant:0.3.181-linux-x64 #last version: carldebilly/zigbee2mqttassistant:linux-arm64
-    container_name: zigbee2mqttAssistant
-    env_file:
-      - zigbee2mqttAssistant.env
-    ports:
-      - 8880:80
-    restart: always
-    depends_on:
-      - eclipse-mosquitto
-    networks:
-      - iot_network
-
   #IoT Services
   homeassistant:
     container_name: homeassistant
@@ -169,6 +156,8 @@ services:
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     restart: always
+    ports:
+      - "8080:8080"
     networks:
       iot_network:
         aliases:

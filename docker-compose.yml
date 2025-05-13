@@ -9,7 +9,8 @@ services:
     volumes:
       - ./data/filebrowser:/data
       - ./data:/data/share/
-    network_mode: host
+    networks:
+      - iot_network
     environment:
       - TZ=Europe/Moscow
     command:  ["--root=/data/share", "--address=0.0.0.0", "--database=/data/filebrowser.db", "--config=/data/config.json"]
